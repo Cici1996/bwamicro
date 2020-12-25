@@ -21,7 +21,7 @@ module.exports = (sequelize,DataTypes) => {
             field:"updated_at"
           }
     },{
-        tableName:"media"
+        tableName:"medias"
     });
 
     return Media;
