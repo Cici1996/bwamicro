@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const userHandler = require("./handler/user");
+const verifyToken = require("./../middlewares/verifyToken");
+
+router.post("/register", userHandler.register);
+router.post("/login", userHandler.login);
+router.post("/logout",verifyToken, userHandler.logout);
+router.put("/",verifyToken, userHandler.update);
+router.get("/", verifyToken, userHandler.getUser);
 
 module.exports = router;
