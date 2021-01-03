@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MentorController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ChapterController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('mentors', [MentorController::class,'index']);
+Route::get('mentors/{id}', [MentorController::class,'show']);
+Route::post('mentors', [MentorController::class,'create']);
+Route::put('mentors/{id}', [MentorController::class,'update']);
+Route::delete('mentors/{id}', [MentorController::class,'destroy']);
+
+Route::get('courses', [CourseController::class,'index']);
+Route::post('courses', [CourseController::class,'create']);
+Route::put('courses/{id}', [CourseController::class,'update']);
+Route::delete('courses/{id}', [CourseController::class,'destroy']);
+
+Route::get('chapters', [ChapterController::class,'index']);
+Route::get('chapters/{id}', [ChapterController::class,'show']);
+Route::post('chapters', [ChapterController::class,'create']);
+Route::put('chapters/{id}', [ChapterController::class,'update']);
+Route::delete('chapters/{id}', [ChapterController::class,'destroy']);
